@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700,900&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.main-bg {
+
+    background: url(../images/nurse.jpg);
+    /* background: url(../images/bg1.png); */
+    /* background: url(../images/blood-pressure-monitor-1749577_1920.jpg); */
+    min-height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-section {
+    min-height: 435px;
+    width: 500px;
+    padding: 30px;
+    border: 3px solid #fff;
+    box-shadow: 1px 4px 26px 11px rgba(0, 0, 0, 0.5);
+    margin-top: 45px;
+    border-radius: 20px;
+}
+
+h4.project-title {
+    color: #fff;
+    font-size: 23px;
+    font-family: Roboto;
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 0;
+
+}
+
+.login-tab {
+    width: 80%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.login-tab .nav-tabs .nav-item {
+    width: 50%;
+}
+
+.login-tab .nav-tabs {
+    margin-bottom: 20px;
+}
+
+.login-tab .nav-tabs .nav-link {
+    color: #fff;
+    font-size: 17px;
+    border: 1px solid #fff;
+    border-radius: 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.login-tab .nav-tabs .nav-link.active {
+    background: #8cc63f;
+    border-radius: 0;
+    color: #fff;
+    border: 1px solid #8cc63f;
+
+}
+
+.login-tab label {
+    color: #fff;
+    font-size: 17px;
+}
+
+.login-tab .form-check-label {
+    font-size: 15px;
+}
+
+.login-tab .form-label-group {
+    margin-bottom: 20px;
+}
+
+.login-tab .form-check-input {
+    margin-left: 0;
+}
+
+.login-tab .form-control {
+    font-size: 15px;
+    color: #666666;
+    border-radius: 0;
+}
+
+.login-tab .form-control:focus {
+    border-color: none;
+}
+
+.green-btn {
+    background: #8cc63f;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 0;
+}
+
+#hint_id_username{
+    display: none;
+}

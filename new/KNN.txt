@@ -1,0 +1,127 @@
+import numpy as np
+import matplotlib.pyplot as plt 
+import pandas as pd
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix
+from sklearn import metrics
+
+data = pd.read_csv('E:\projectKNN\heart.csv')
+
+data.head()
+
+#count how many have disease or not 1=yes 0=no
+data.target.value_counts()
+
+
+#visualize result
+sns.countplot(x="target", data=data, palette="bwr")
+plt.show()
+
+
+#male female visualize 
+sns.countplot(x='sex', data=data, palette="mako_r")
+plt.xlabel("Sex (0 = female, 1= male)")
+plt.show()
+
+
+#relation between “Maximum Heart Rate” and “Age”
+plt.scatter(x=data.age[data.target==1], y=data.thalach[(data.target==1)], c="green")
+plt.scatter(x=data.age[data.target==0], y=data.thalach[(data.target==0)], c = 'black')
+plt.legend(["Disease", "Not Disease"])
+plt.xlabel("Age")
+plt.ylabel("Maximum Heart Rate")
+plt.show()
+
+
+#label dataset with X(matrix of independent variables) and y(vector of the dependent variable)
+X = data.iloc[:,:-1].values
+y = data.iloc[:,13].values
+
+
+#split data into 75% for train 25% for test
+X_train, X_test, y_train, y_test =  train_test_split(X,y,test_size = 0.25, random_state= 0)
+
+#normalize or feature scaling
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train)
+X_test = sc_X.transform(X_test)
+
+
+#train data with KNN model
+classifier = KNeighborsClassifier(n_neighbors = 5, metric = 'minkowski', p = 2)
+classifier = classifier.fit(X_train,y_train)
+
+
+#having k=5 lets check accuracy with test data by knn (we need to chose optimal value for k)
+y_pred = classifier.predict(X_test)
+#check accuracy
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print('Accuracy: {:.2f}'.format(accuracy))
+
+
+
+#for k=7 accuracy will be
+classifier = KNeighborsClassifier(n_neighbors = 7, metric = 'minkowski', p = 2)
+classifier = classifier.fit(X_train,y_train)
+#prediction
+y_pred = classifier.predict(X_test)
+#check accuracy
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print('Accuracy: {:.2f}'.format(accuracy))
+
+
+#for k=9 accuracy will be
+classifier = KNeighborsClassifier(n_neighbors = 9, metric = 'minkowski', p = 2)
+classifier = classifier.fit(X_train,y_train)
+#prediction
+y_pred = classifier.predict(X_test)
+#check accuracy
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print('Accuracy: {:.2f}'.format(accuracy))
+
+
+#for k=10 accuracy will be
+classifier = KNeighborsClassifier(n_neighbors = 10, metric = 'minkowski', p = 2)
+classifier = classifier.fit(X_train,y_train)
+#prediction
+y_pred = classifier.predict(X_test)
+#check accuracy
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print('Accuracy: {:.2f}'.format(accuracy))
+
+
+#for k=12 accuracy will be
+classifier = KNeighborsClassifier(n_neighbors = 12, metric = 'minkowski', p = 2)
+classifier = classifier.fit(X_train,y_train)
+#prediction
+y_pred = classifier.predict(X_test)
+#check accuracy
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print('Accuracy: {:.2f}'.format(accuracy))
+
+
+#for k=11 accuracy will be
+classifier = KNeighborsClassifier(n_neighbors = 11, metric = 'minkowski', p = 2)
+classifier = classifier.fit(X_train,y_train)
+#prediction
+y_pred = classifier.predict(X_test)
+#check accuracy
+accuracy = metrics.accuracy_score(y_test, y_pred)
+print('Accuracy: {:.2f}'.format(accuracy))
+
+
+#so here we can see for k=10 we find the most accuracy of 89% 
+#now use confusion matrix for testing how many records tested corecctly
+#confusion matrix
+from sklearn.metrics import confusion_matrix
+confusion_matrix = confusion_matrix(y_test, y_pred)
+print("Confusion matrix:\n%s" % confusion_matrix)
+
+
+
+classifier.predict([[29,1,1,130,204,0,0,202,0,0,2,0,2]]) 		eikhane ans ase na...***
+
+
